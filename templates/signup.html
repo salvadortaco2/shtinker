@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>The Shtinker</title>
+
+   
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/css/signup.css" rel="stylesheet">
+   
+  </head>
+
+  <body>
+
+	
+    <div class="container">
+	  
+      <div class="header">
+		<!--
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="showHome">Home</a></li>
+            <li role="presentation"><a href="#">Sign In</a></li>
+            <li role="presentation" class="active"><a href="#">Sign Up</a></li>
+          </ul>
+        </nav>
+		-->
+        <h3 class="text-muted">The Shtinker</h3>
+      </div>
+	  
+	  
+      <div class="jumbotron">
+	    
+		
+        <h1 align="center">Instagram Scanner</h1>
+        <form class="form-signin" method="post">
+		<!--<img src="/static/images/instagram.png" align="center" width="40" height="40" valign="center">-->
+		<label for="inputEntry" class="sr-only">Add entry...</label>
+        <input type="name" name="inputEntry" id="inputEntry" class="form-control" placeholder="Username" autofocus>
+		<button id="btnAddToTable" class="btn btn-lg btn-primary btn-block" type="button" onclick="addText()">+</button>
+		<!--
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+		-->
+		<label for="inputUrls" class="sr-only">Profiles</label>
+		<textarea name="inputUrls" id="inputUrls" class="form-control" cols="50" rows="5"></textarea>
+		<!--
+		<label for="inputUrls" class="sr-only">Profiles</label>
+		<input type="name" name="inputUrls" id="inputUrls" class="form-control" placeholder="Profiles" required>
+		-->
+        <input type="submit" formmethod="post" value="Submit" align="center"><br>
+		
+        <!--<button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>-->
+		</form>
+      </div>
+	<!--
+	  <script>
+		
+	  </script>
+	  -->
+      <script>
+	  
+	  function hideClean() {
+		var x = document.getElementById("inputEntry");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+	  }
+	  function addText() {
+			var entryValue = document.getElementById("inputEntry").value;
+			if( entryValue != null && entryValue != false && entryValue != "\n" && entryValue != "\r\n"){
+				document.getElementById("inputUrls").value += entryValue + "\n";
+			}
+			document.getElementById("inputEntry").value = "";
+			document.getElementById("inputEntry").focus();
+			document.getElementById("inputEntry").select();
+		}
+	  
+	  </script>
+
+      <footer class="footer">
+        <p>&copy; Daniel Avinoam, Asaf Gilboa, Tom Roter, Eric Berdichevsky, Sagi Kaplansky</p>
+      </footer>
+
+    </div>
+  </body>
+</html>
+

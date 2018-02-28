@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+	<head>
+		<title>The Shtinker</title>
+
+	   
+		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+		<link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+		<link href="../static/css/result.css" rel="stylesheet">
+		
+   
+	</head>
+
+	<header>
+		<h1>Instagram Shtinker Results:</h1>
+		<a href="/">Click here to scan more profiles...</a>
+	</header>
+	
+	<body>
+		<div class="tab">
+			<button class="tablinks" onclick="openCity(event, 'PrivateUsers')" id="defaultOpen">
+				<h1>
+					<img src="/static/images/lock.png" width="35" height="35">
+					<span style="color:orange">PRIVATE</span>
+				Profiles
+				</h1>
+			</button>
+			<button class="tablinks" onclick="openCity(event, 'CleanUsers')">
+				<h1>
+					<img src="/static/images/green_checkmark.png" width="35" height="35">
+					<span style="color:green">GOOD</span> 
+					Profiles
+				</h1>
+			</button>
+			<button class="tablinks" onclick="openCity(event, 'BadUsers')">
+				<h1>
+					<img src="/static/images/disappointed.png" width="35" height="35">
+					<span style="color:red">BAD</span>
+					Profiles
+				</h1>
+			</button>
+		</div>
+		
+		<div class="site-inner">
+		<!--
+		<button onclick="hidePrivate()">Hide/Show</button>
+		<div id="PrivateUsers" class="tabcontent">
+			<table border = 1>
+				<tr>
+					<th>Name</th>
+					<th>Username</th>
+					<th>Profile Picture</th>
+					<th>Link to Profile</th>
+				</tr>
+				{% for user in privateUsers %}
+			 
+				<tr>
+					<td> {{ user.name }} </th>
+					<td> {{ user.username }} </td>
+					<td> <img src="/static/{{ user.username }}/profile.jpg" alt="No profile picture"></td>
+					<td> <a href="{{ user.linkToProfile }}">{{ user.linkToProfile }}</a> </td>
+				</tr>
+				
+			 {% endfor %}
+			</table>
+		</div>
+		-->
+		
+		<!--
+		<button onclick="hideClean()">Hide/Show</button>
+		-->
+		
+		<div id="PrivateUsers" class="tabcontent">
+			<table border = 1 class="responsive-table">
+				<tr>
+					<th>Name</th>
+					<th>Username</th>
+					<th>Profile Picture</th>
+					<th>Link to Profile</th>
+				</tr>
+				 {% for user in privateUsers %}
+				 
+					<tr>
+					   <td> {{ user.name }} </th>
+					   <td> {{ user.username }} </td>
+					   <td> <img src="/static/{{ user.username }}/profile.jpg" alt="No profile picture"></td>
+					   <td> <a href="{{ user.linkToProfile }}">{{ user.linkToProfile }}</a> </td>
+					</tr>
+					
+				 {% endfor %}
+			  </table>
+		</div>
+		
+		<div id="CleanUsers" class="tabcontent">
+			<table border = 1 class="responsive-table">
+				<tr>
+					<th>Name</th>
+					<th>Username</th>
+					<th>Profile Picture</th>
+					<th>Link to Profile</th>
+				</tr>
+				 {% for user in cleanUsers %}
+				 
+					<tr>
+					   <td> {{ user.name }} </th>
+					   <td> {{ user.username }} </td>
+					   <td> <img src="/static/{{ user.username }}/profile.jpg" alt="No profile picture"></td>
+					   <td> <a href="{{ user.linkToProfile }}">{{ user.linkToProfile }}</a> </td>
+					</tr>
+					
+				 {% endfor %}
+			  </table>
+		</div>
+	        
+		
+		<div id="BadUsers" class="tabcontent">
+			<table border = 1 class="responsive-table">
+				<tr>
+					<th>Name</th>
+					<th>Username</th>
+					<th>Profile Picture</th>
+					<th>Link to Profile</th>
+					<th>Links to Bad Pictures</th>
+				</tr>
+				 {% for user in badUsers %}
+				 
+					<tr>
+					   <td> {{ user.name }} </th>
+					   <td> {{ user.username }} </td>
+					   <td> <img src="/static/{{ user.username }}/profile.jpg" alt="No profile picture"> </td>
+					   <td> <a href="{{ user.linkToProfile }}">{{ user.linkToProfile }}</a> </td>
+					   <td>
+					   {% for badLink in user.badLinks %}
+					   <!--{{ badLink }}-->
+					   <a href="{{ badLink }}">{{ badLink }}</a>
+					   <br>
+					   {% endfor %}
+					   </td>
+					</tr>
+					
+				 {% endfor %}
+			  </table>
+		</div>
+	
+	  
+	  </div>
+	  <script>
+	  function hideClean() {
+		var x = document.getElementById("CleanUsers");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+	  }
+	  function hidePrivate() {
+		var x = document.getElementById("PrivateUsers");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+	  }
+	  function openCity(evt, cityName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(cityName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+	  </script>
+   </body>
+</html>

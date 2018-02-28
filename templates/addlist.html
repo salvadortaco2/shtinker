@@ -1,0 +1,64 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type="text/css">
+    
+  </style>
+
+  <title></title>
+
+  
+</head>
+
+<body>
+  First name:
+<input type="text" id="firstname">
+<br>
+<p>Your first name is: <b id="boldStuff2">asdasd</b> 
+</p>
+<p>Other people's names:</p>
+<ol id="demo"><li>erterter</li><li>asdasd</li></ol>
+<input type="button" onclick="changeText2()" value="Submit">
+  
+
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+
+var list = document.getElementById('demo');
+
+function changeText2() {
+    var firstname = document.getElementById('firstname').value;
+    document.getElementById('boldStuff2').innerHTML = firstname;
+    var entry = document.createElement('li');
+    entry.appendChild(document.createTextNode(firstname));
+    list.appendChild(entry);
+}
+//]]> 
+
+</script>
+
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "Gmyag"
+    }], "*")
+  }
+</script>
+
+
+
+
+
+</body></html>
