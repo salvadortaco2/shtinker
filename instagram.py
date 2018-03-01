@@ -70,8 +70,8 @@ class Instagram:
             self.pics_dic[picturePath] = url
             self.donePicturesQueue.task_done()
 
-if __name__ == "__main__":
-    donePicturesQueue = queue.Queue()
-    user = Instagram(donePicturesQueue, 'stavharan_')
-    user.scan()
+##if __name__ == "__main__":
+##    donePicturesQueue = queue.Queue()
+##    user = Instagram(donePicturesQueue, 'stavharan_')
+##    user.scan()
 

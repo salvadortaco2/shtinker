@@ -105,9 +105,9 @@ def progress():
                     sleep(0.1)
                 
                 # Replace with Sagi's function
-                time.sleep(0.2)
+                list_of_bad = shtink_user(insta.pics_dic)
+                user = User(insta.fullName, username, insta.profileUrl, list_of_bad)
 
-                user = User(insta.fullName, username, insta.profileUrl, []) # Change this later to include bad links
                 if user.badLinks:
                     badUsers.append(user)#User(url))
                 elif insta.isPrivate:
