@@ -21,6 +21,7 @@ class Instagram:
         self.profileUrl = 'r{}/{}'.format(INSTAGRAM_URL, userName)[1:]
         self.isPrivate = self.looter.get_metadata()['is_private']
         self.pics_dic = {}
+        self.sum = 0
         self.counter = 0
         self.scan()
         #self.connectedFacebookPage = self.looter.get_metadata()['connected_fb_page'] --> Connected Facebook page, can be None.
@@ -62,13 +63,16 @@ class Instagram:
                 url = media['display_src']
                 
             dataToWrite = http.request("GET",url).data
-            picturePath = '{}\{}{}.jpg'.format(self.userFolder, self.userName, str(threading.current_thread().ident) * randint(1, 10))
+            picturePath = '{}\{}{}.jpg'.format(self.userFolder, self.userName, str(threading.current_thread().ident * randint(1, 10000000)))
+            if os.path.exists(picturePath):
+                print("if u see this the programmer is an idiot " + picturePath)
             with open(picturePath, 'wb') as picture:
                  picture.write(dataToWrite)
             availablePicturesQueue.task_done()
             self.donePicturesQueue.put({picturePath : url})
             self.pics_dic[picturePath] = url
             self.donePicturesQueue.task_done()
+            self.sum += 1
 
 ##if __name__ == "__main__":
 ##    donePicturesQueue = queue.Queue()

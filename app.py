@@ -30,48 +30,6 @@ def signUp():
     usernames = request.form['inputUrls'].split('\r\n')
     return redirect("/results", code=302)
 
-    # This might come back later
-    privateUsers = []
-    cleanUsers = []
-    badUsers = []
-
-    # Directory of /
-    home_dir = os.path.dirname(os.path.realpath(__file__))
-        
-    # Scan every username
-    for username in usernames:
-        if username != "":
-
-            # C:\..\static\asaf.gilboa
-            userFolder = os.path.join(home_dir, "static", username)
-            
-            # Create directory for the user
-            if not os.path.exists(userFolder):
-                os.makedirs(userFolder)
-            else:
-                rmtree(userFolder)
-                os.makedirs(userFolder)
-            
-            insta = Instagram(username, userFolder)
-            print("TROLOLOLO")
-            print(insta.isPrivate)
-            while insta.counter >= 0:
-                insta.counter-=1
-                sleep(0.1)
-            print(insta.isPrivate)
-            print("TROLOLOLO")
-            list_of_bad = shtink_user(insta.pics_dic)
-            user = User(insta.fullName, username, insta.profileUrl, list_of_bad) # Change this later to include bad links
-            print(insta.isPrivate)
-            if user.badLinks:
-                badUsers.append(user)#User(url))
-            elif insta.isPrivate:
-                privateUsers.append(user)
-            else:
-                cleanUsers.append(user)
-
-    return render_template('result.html', privateUsers = privateUsers, cleanUsers = cleanUsers, badUsers = badUsers)
-
 @app.route('/results')
 def progress():
 
@@ -100,8 +58,7 @@ def progress():
 
                 insta = Instagram(username, userFolder)
 
-                while insta.counter >= 0:
-                    insta.counter-=1
+                while insta.sum <= insta.counter:
                     sleep(0.1)
                 
                 # Replace with Sagi's function
