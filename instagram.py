@@ -19,6 +19,7 @@ class Instagram:
         self.fullName = self.looter.get_metadata()['full_name']
         self.profilePicture = self.looter.get_metadata()['profile_pic_url']
         self.profileUrl = 'r{}/{}'.format(INSTAGRAM_URL, userName)[1:]
+        self.isPrivate = self.looter.get_metadata()['is_private']
         self.pics_dic = {}
         self.counter = 0
         self.scan()
