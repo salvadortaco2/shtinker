@@ -32,7 +32,9 @@ def shtink(image):
 def shtink_user(file_dic):
     bad_urls = []
     for file_path in file_dic:
-        if shtink(file_path):
+        shtink_flag = shtink(file_path)
+        print("path: " + file_path + " military: " + str(shtink_flag))
+        if shtink_flag:
             bad_urls.append(file_dic[file_path])
     return bad_urls
             

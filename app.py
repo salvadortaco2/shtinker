@@ -58,7 +58,7 @@ def progress():
 
                 insta = Instagram(username, userFolder)
 
-                while insta.sum <= insta.counter:
+                while insta.sum < insta.counter:
                     sleep(0.1)
                 
                 # Replace with Sagi's function
