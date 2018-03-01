@@ -16,7 +16,7 @@ def run_command(command, wait=False):
 
 start_time = time.time()
 results =[]
-lookup_words = [b'military', b'plane', b'aircraft', b'missile', b'stretcher', b'lab coat']
+lookup_words = [b'military', b'plane', b'aircraft', b'missile']
 
 def bad_image(imgOutput):
     for f in lookup_words:
